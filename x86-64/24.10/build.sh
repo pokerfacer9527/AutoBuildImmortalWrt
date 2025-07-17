@@ -70,8 +70,8 @@ PACKAGES="$PACKAGES luci-i18n-quickstart-zh-cn"
 #PACKAGES="$PACKAGES luci-app-passwall2"
 #PACKAGES="$PACKAGES luci-i18n-nikki-zh-cn"
 # VPN
-#PACKAGES="$PACKAGES luci-app-tailscale"
-#PACKAGES="$PACKAGES luci-i18n-tailscale-zh-cn"
+PACKAGES="$PACKAGES luci-app-tailscale"
+PACKAGES="$PACKAGES luci-i18n-tailscale-zh-cn"
 # 分区扩容 by sirpdboy 
 PACKAGES="$PACKAGES luci-app-partexp"
 PACKAGES="$PACKAGES luci-i18n-partexp-zh-cn"
