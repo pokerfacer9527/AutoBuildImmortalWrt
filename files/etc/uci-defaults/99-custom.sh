@@ -51,10 +51,12 @@ case "$board_name" in
         echo "Using $board_name mapping: WAN=$wan_ifname LAN=$lan_ifnames" >>"$LOGFILE"
         ;;
     *)
-        # 默认第一个接口为WAN，其余为LAN
-        wan_ifname=$(echo "$ifnames" | awk '{print $1}')
-        lan_ifnames=$(echo "$ifnames" | cut -d ' ' -f2-)
-        echo "Using default mapping: WAN=$wan_ifname LAN=$lan_ifnames" >>"$LOGFILE"
+        # --- 修改部分：默认最后一个接口为 WAN，其余为 LAN ---
+        # 获取最后一个单词作为 WAN
+        wan_ifname=$(echo "$ifnames" | awk '{print $NF}')
+        # 获取除去最后一个单词的所有部分作为 LAN
+        lan_ifnames=$(echo "$ifnames" | sed 's/[[:space:]]*[^[:space:]]*$//')
+        echo "Using default mapping (Last as WAN): WAN=$wan_ifname LAN=$lan_ifnames" >>"$LOGFILE"
         ;;
 esac
 
